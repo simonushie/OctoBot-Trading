@@ -648,17 +648,3 @@ class AbstractExchange(tentacles_management.AbstractTentacle):
     def handle_token_error(self, error):
         self.logger.error(f"Exchange configuration is invalid : please check your configuration ! "
                           f"({error.__class__.__name__}: {error})")
-
-    @classmethod
-    def load_user_inputs(cls, tentacles_setup_config, tentacle_config):
-        return configuration.load_user_inputs_from_class(cls, tentacles_setup_config, tentacle_config)
-
-    @classmethod
-    async def get_raw_config_and_user_inputs(cls, _, tentacles_setup_config, __):
-        return configuration.get_raw_config_and_user_inputs_from_class(cls, tentacles_setup_config)
-
-    @classmethod
-    def init_user_inputs(cls, inputs: dict) -> None:
-        """
-        Called at constructor, should define all the exchange's user inputs.
-        """
